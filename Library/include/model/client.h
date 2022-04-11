@@ -16,15 +16,17 @@ namespace wypozyczalnia {
         std::string lastName;
         std::string personalID;
         address *CAddress;
-        std::vector<rent> numberRent;
+        std::vector<rent> *numberRent;
 
     public:
         client(const std::string initial_firstName, const std::string initial_lastName, const std::string initial_personalID, address* address);
         ~client();
 
 
+
         //gettery
         std::string getClientinfo ();
+        std::string getFullClientInfo ();
         const std::string &get_firstName ();
         const std::string &get_lastName ();
         const std::string &get_personalID ();

@@ -4,35 +4,28 @@
 
 #ifndef CARRENTAL_ADRESS_H
 #define CARRENTAL_ADRESS_H
-//
-// Created by student on 18.03.2022.
-//
-
-#ifndef CARRENTAL_CLIENT_H
-#define CARRENTAL_CLIENT_H
+#include "string"
 namespace wypozyczalnia {
-    class adress {
+    class address {
     private:
         std::string city;
-        std::string lastName;
-        std::string personalID;
+        std::string street;
+        std::string number;
 
     public:
-        client(std::string initial_firstName, std::string initial_lastName, std::string initial_personalID);
-        ~client();
-        std::string getClientinfo ();
+        address(const std::string &icity, const std::string &istreet, const std::string &inumber);
+        ~address();
 
         //gettery
-        std::string get_firstName ();
-        std::string get_lastName ();
-        std::string get_personalID ();
+        const std::string getAddressInfo ();
+        const std::string &get_city ();
+        const std::string &get_street ();
+        const std::string &get_number ();
 
         //settery
-        void set_firstName (std::string);
-        void set_lastName (std::string);
-        void set_personalID (std::string);
+        //void set_city (std::string);
+        //void set_street (std::string);
+        //void set_number (std::string);
     };
 }
-#endif //CARRENTAL_CLIENT_H
-
 #endif //CARRENTAL_ADRESS_H

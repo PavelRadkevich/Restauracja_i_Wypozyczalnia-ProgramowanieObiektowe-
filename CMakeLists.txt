@@ -25,9 +25,9 @@ enable_language(CXX)
 #W specjalnym pliku compile_commands.json można podejrzeć wszystkie operacje kompilatora wraz z parametrami, 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) 
 set(CMAKE_VERBOSE_MAKEFILE TRUE) 
-#Uwzględnij podprojekt znajdujący się w podkatalogu program. Musi być w nim pliki CMakeLists.txt
-add_subdirectory(program)
-add_subdirectory(library)
+#Uwzględnij podprojekt znajdujący się w podkatalogu Program. Musi być w nim pliki CMakeLists.txt
+add_subdirectory(Program)
+add_subdirectory(Library)
 #Włączenie testów powoduje pojawienie się celu test w makefiles
 enable_testing()
 
