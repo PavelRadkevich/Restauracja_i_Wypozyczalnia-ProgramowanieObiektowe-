@@ -1,0 +1,11 @@
+Trzeba dodać do RentObjectMananger metodę: GetAllTableInHall (HallPtr), vector<table>\
+
+Sprawdzać przy przypisaniu ID,czy on juz nie istnieje
+
+Na diagramie w konstruktorze klasy Table, trzeba dodać polę objectID
+
+Na diagramie w konstruktorze klasy Peronal, trzeba wszystko zmienić, ten konstruktor taki samy jak w Table
+
+Dodać że metoda GetObjectInfo jest metodą abstrakcyjną, tak samo dodać tą metodę do wszystkich pochodnych klas
+
+Dla wszystkich RentObjectów trzeba dodać pola z nazwami, bo nie ma co pokazywać na ekranie, trzeba wyróźniać nie tylko poprzez ID.
