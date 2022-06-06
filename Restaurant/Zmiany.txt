@@ -9,3 +9,11 @@ Na diagramie w konstruktorze klasy Peronal, trzeba wszystko zmienić, ten konstr
 Dodać że metoda GetObjectInfo jest metodą abstrakcyjną, tak samo dodać tą metodę do wszystkich pochodnych klas
 
 Dla wszystkich RentObjectów trzeba dodać pola z nazwami, bo nie ma co pokazywać na ekranie, trzeba wyróźniać nie tylko poprzez ID.
+
+Do klasy Group dodać atrybut Sale, on będzie uwzgdględniony podczas wyliczania ceny
+
+Zmienić getActualPrice na getActualPriceForHour (będzie cena za godzinę, będziemy z niej korzystać przy wyliczeniu rzeczywistej ceny wynajmu)
+
+Zmienić imię klasy Repositories na StorageContainer
+
+Trzeba pomyśleć jak zrobić wszystkie destruktory, i zauważyć że przechowujemy nipotrebne dane w repozytoriach

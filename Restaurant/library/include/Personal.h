@@ -11,9 +11,10 @@ class Personal : public Table{
 private:
 
 public:
-    Personal (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_);
+    Personal (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_, const int& numberOfTable_);
     ~Personal();
     const string getObjectInfo() const;
+    const double getActualPriceForHour () const;
 };
 
 

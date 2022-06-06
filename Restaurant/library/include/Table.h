@@ -13,13 +13,21 @@ protected:
     int capacity;
     bool rented;
     HallPtr hall;
+    int numberOfTable;
 
 public:
     //Konstruktor
-    Table (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_);
+    Table (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_, const int &numberOfTable_);
 
     //Destruktor
     ~Table();
+
+    //Gettery
+    virtual const string getObjectInfo ()const;
+    virtual const double getActualPriceForHour () const;
+
+    //Settery
+    void changeHall (HallPtr newHall);
 };
 
 

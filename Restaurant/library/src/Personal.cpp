@@ -4,14 +4,25 @@
 
 #include "Personal.h"
 //Konstruktor
-Personal::Personal(const int &basePrice, const int &objectID_, const int &capacity_, const Hall &hall_) :
-Table(basePrice, objectID_, capacity_, hall_){}
+Personal::Personal(const int &basePrice, const int &objectID_, const int &capacity_, const Hall &hall_, const int &numberOfTable_) :
+Table(basePrice, objectID_, capacity_, hall_, numberOfTable_){}
 
 //Destruktor
 Personal::~Personal(){}
 
 //Gettery
-const string Personal::getObjectInfo() const {
-    return "Capacity: " + std::to_string(capacity) + ". Base price: " + std::to_string(basePrice) +
-    ". Object ID: " + std::to_string(objectID);
+const double Personal::getActualPriceForHour() const {
+    return basePrice * hall->getPriceFactor() * capacity;
 }
+
+const string Personal::getObjectInfo() const {
+    string status;
+    if (!rented)
+        status = "No";
+    else
+        status = "Yes";
+
+    return "Table number: " + to_string(numberOfTable) + " (ID: " + to_string(objectID)  +"). Located in the Hall " +
+    hall->getName() + ". Capacity: " +std::to_string(capacity) + ". Base price: " + std::to_string(basePrice) + ". Ordered: " + status;
+}
+

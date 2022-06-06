@@ -22,3 +22,7 @@ const int &RentObject::getObjectID() const {
 const string RentObject::getObjectInfo() const {
     return "Jestem w klasie RentObject, coś nie tak";
 }
+
+const double RentObject::getActualPriceForHour() const {
+    return 0;
+}

@@ -2,18 +2,28 @@
 // Created by student on 03.06.2022.
 //
 
-#ifndef INTRODUCTIONPROJECT_TYPEDEFS_H
-#define INTRODUCTIONPROJECT_TYPEDEFS_H
+#ifndef RESTAURANT_TYPEDEFS_H
+#define RESTAURANT_TYPEDEFS_H
 
 
 #include "Address.h"
 #include "Hall.h"
 #include "memory"
+#include "repositories/ClientRepository.h"
+#include "repositories/AddressRepository.h"
+#include "repositories/RentObjectRepository.h"
+#include "repositories/RentRepository.h"
+
 
 
 
 typedef shared_ptr<Address> AddressPtr;
 typedef shared_ptr<Hall> HallPtr;
+//typedef shared_ptr<ClientRepository> ClientRepositoryPtr;
+//typedef shared_ptr<AddressRepository> AddressRepositoryPtr;
+//typedef shared_ptr<RentObjectRepository> RentObjectRepositoryPtr;
+//typedef shared_ptr<RentRepository> RentRepositoryPtr;
+typedef shared_ptr<RentObject> RentObjectPtr;
 
 
-#endif //INTRODUCTIONPROJECT_TYPEDEFS_H
+#endif //RESTAURANT_TYPEDEFS_H

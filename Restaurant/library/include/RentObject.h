@@ -25,6 +25,7 @@ public:
     const int &getBasePrice () const;
     const int &getObjectID () const;
     virtual const string getObjectInfo () const;
+    virtual const double getActualPriceForHour () const;
 
 };
 

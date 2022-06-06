@@ -9,16 +9,22 @@
 
 class Hall : public RentObject{
 protected:
-    int priceFactor;
+    string name;
+    double priceFactor;
 
 public:
     //Konstruktor
-    Hall(const int &basePrice_, const int &objectID, const int& priceFactor_);
+    Hall(const int &basePrice_, const int &objectID, const double& priceFactor_, const string& name_);
 
     //Destruktor
     ~Hall();
 
     //Gettery
+    const double  getPriceFactor () const;
+    const string getName () const;
+
+    const string getObjectInfo () const;
+
 };
 
 
