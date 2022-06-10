@@ -10,12 +10,12 @@
 
 using namespace std;
 
-class Client {
+class Client : enable_shared_from_this<Client> {
 private:
     string firstName;
     string lastName;
     int phone;
-    AddressPtr address;
+    shared_ptr<Address> address;
 
 public:
     //Konstruktor
@@ -25,8 +25,10 @@ public:
     ~Client();
 
     //Gettery
-    string getClientInfo () const;
-    string getFullClientInfo () const;
+    const string getClientInfo () const;
+    const string getFullClientInfo () const;
+    const int getClientPhone () const;
+    const string getNames ();
 
 };
 

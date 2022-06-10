@@ -6,11 +6,13 @@
 #define RESTAURANT_HALL_H
 
 #include "RentObject.h"
+#include <vector>
 
-class Hall : public RentObject{
+class Hall : public RentObject, enable_shared_from_this<Hall>{
 protected:
     string name;
     double priceFactor;
+    vector<shared_ptr<Table>> tables {};
 
 public:
     //Konstruktor
@@ -22,8 +24,13 @@ public:
     //Gettery
     const double  getPriceFactor () const;
     const string getName () const;
-
     const string getObjectInfo () const;
+    const vector<shared_ptr<Table>> *getTablesOfHall () const ;
+
+    //Settery
+    void addTable (shared_ptr<Table>);
+    void removeTable(shared_ptr<Table>);
+
 
 };
 

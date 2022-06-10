@@ -11,10 +11,19 @@ class Personal : public Table{
 private:
 
 public:
+    //Konstruktor
     Personal (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_, const int& numberOfTable_);
+    Personal(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_);
+
+    //Destruktor
     ~Personal();
+
+    //Gettery
     const string getObjectInfo() const;
     const double getActualPriceForHour () const;
+
+    //Settery
+    void updatePrice ();
 };
 
 

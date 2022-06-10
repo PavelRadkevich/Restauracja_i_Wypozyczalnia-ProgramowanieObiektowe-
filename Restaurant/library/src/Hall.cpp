@@ -24,3 +24,19 @@ const string Hall::getName() const {
 const string Hall::getObjectInfo() const {
     return "Sala " + name  + " (ID: " + to_string(objectID) + ")" +  ". Licznik ceny: " + to_string(priceFactor);
 }
+
+    const vector<shared_ptr<Table>> *Hall::getTablesOfHall() const {
+    return &tables;
+}
+
+//Settery
+void Hall::addTable(shared_ptr<Table> arg) {
+    tables.push_back(arg);
+}
+
+void Hall::removeTable(shared_ptr<Table> table_) {
+    for (auto t = tables.begin(); t < tables.end(); t++){
+        if ((*t) == table_ )
+            tables.erase(t);
+    }
+}

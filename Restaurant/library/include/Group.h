@@ -21,6 +21,9 @@ public:
     //Gettery
     const double getActualPriceForHour () const;
     const string getObjectInfo() const;
+
+    //Settery
+    void updatePrice ();
 };
 
 

@@ -1,4 +1,4 @@
-Trzeba dodać do RentObjectMananger metodę: GetAllTableInHall (HallPtr), vector<table>\
+Trzeba dodać do RentObjectMananger metodę: GetAllTableInHall (HallPtr, vector<Table>* (vector ma być pusty)), vector<table>\
 
 Sprawdzać przy przypisaniu ID,czy on juz nie istnieje
 
@@ -17,3 +17,15 @@ Zmienić getActualPrice na getActualPriceForHour (będzie cena za godzinę, będ
 Zmienić imię klasy Repositories na StorageContainer
 
 Trzeba pomyśleć jak zrobić wszystkie destruktory, i zauważyć że przechowujemy nipotrebne dane w repozytoriach
+
+Trzeba dodać metody getTablePtr i getTableHallPtr one stworzone dla metody getAllTableInHall
+
+Dodać klasy wyjątków, ogólnie one są nieobowiązkowe, ale jak będzie czas zrobimy, bo są bardzo przydatne czasami
+
+GetNames do klasy Client, bardzo ładnie wywodzi
+
+Atrybut rentCost zamienić na double
+
+Tworzymy argument cost dla klasy Rent, dodatkowo jeszcze tworzymy kilka metod, związanych z wyliczeniem i aktualizowaniem ceny
+
+Bool Rented przemieszczmay do RentObject

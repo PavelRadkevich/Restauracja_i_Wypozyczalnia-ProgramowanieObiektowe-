@@ -6,9 +6,10 @@
 #define RESTAURANT_ADDRESS_H
 
 #include "string"
+#include <memory>
 using namespace std;
 
-class Address {
+class Address : enable_shared_from_this<Address> {
 private:
     string city;
     string street;
