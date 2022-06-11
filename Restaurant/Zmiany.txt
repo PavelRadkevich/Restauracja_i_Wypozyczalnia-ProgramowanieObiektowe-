@@ -29,3 +29,5 @@ Atrybut rentCost zamienić na double
 Tworzymy argument cost dla klasy Rent, dodatkowo jeszcze tworzymy kilka metod, związanych z wyliczeniem i aktualizowaniem ceny
 
 Bool Rented przemieszczmay do RentObject
+
+Przy dodaniu stolika do restauracji, trzba sprawdzać czy ma on przypisany Hall

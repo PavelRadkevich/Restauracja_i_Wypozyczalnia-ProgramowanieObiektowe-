@@ -8,17 +8,22 @@
 #include "RentObject.h"
 #include "typedefs.h"
 
-class Table : public RentObject, enable_shared_from_this<Table> {
+class Table : public RentObject, public enable_shared_from_this<Table>{
 protected:
     int capacity;
     HallPtr hall;
     int numberOfTable;
+    shared_ptr<Table> I;
+
+    void init();
+
 
 
 public:
     //Konstruktor
-    Table (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_, const int &numberOfTable_);
-    Table(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_);
+    Table (const int& basePrice, const int& objectID_, const int& capacity_, const int &numberOfTable_);
+    //Table(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_);
+    static shared_ptr<Table> create (const int& basePrice, const int& objectID_, const int& capacity_, const int &numberOfTable_);
 
     //Destruktor
     ~Table();
@@ -27,13 +32,13 @@ public:
     virtual const string getObjectInfo ()const;
     virtual const double getActualPriceForHour () const;
     const shared_ptr<Hall> getTableHallPtr () const override;
-    const shared_ptr<const Table> getTablePtr () const override;
-    //const double getCost () const;
+    shared_ptr<const Table> getTablePtr ();
+    const shared_ptr<Hall> getHallPtr ()const;
 
     //Settery
-    void changeHall (HallPtr newHall);
+    void changeHall (HallPtr newHall, shared_ptr<Table> table1);
     virtual void updatePrice ();
-    void addToHall () override ;
+    void setHall (shared_ptr<Hall> newHall, shared_ptr<Table> table1);
 
 };
 

@@ -6,14 +6,15 @@
 #include "exceptions/RentExceptions.h"
 #include "Client.h"
 #include "RentObject.h"
+#include "Hall.h"
 
 namespace pt = boost::posix_time;
 namespace gr = boost::gregorian;
 
 
 //Konstruktor
-Rent::Rent(const int id_, const shared_ptr<Client> client_, pt::ptime beginTime_, pt::ptime endTime_, shared_ptr<RentObject> rentObject_):
-id(id_), client(client_), beginTime(beginTime_), endTime(endTime_), rentObject(rentObject_) {
+Rent::Rent(const int id_, const shared_ptr<Client> client_, pt::ptime beginTime_, pt::ptime endTime_, shared_ptr<RentObject> rentObject_, const bool &isHallRent_):
+id(id_), client(client_), beginTime(beginTime_), endTime(endTime_), rentObject(rentObject_), isHallRent(isHallRent_) {
     if (beginTime < pt::second_clock::local_time() || beginTime == pt::not_a_date_time) throw RentExceptions("INVALID BEGIN TIME");
     if (endTime < beginTime || endTime == pt::not_a_date_time) throw RentExceptions("INVALID END TIME");
     if (client == nullptr) throw RentExceptions("INVALID CLIENT");
@@ -25,11 +26,9 @@ id(id_), client(client_), beginTime(beginTime_), endTime(endTime_), rentObject(r
     else
         throw RentExceptions("THE RENT OBJECT IS ALREADY RENTED!");
 
-    /*if (rentObject->getTablePtr() == nullptr){
-        for ( auto t = rentObject->getTablesOfHall()->begin(); t < rentObject->getTablesOfHall()->end(); t++)
-           (*t)->setRented(true);
-
-    }*/
+    if (isHallRent){
+        rentObject->setRentForTables(true);
+    }
 }
 
 //Destruktor
@@ -46,10 +45,8 @@ const string Rent::getRentInfo() {
 }
 
 const double Rent::getRentCost() {
-    if (rentObject->getTablePtr() != nullptr) {
         pt::time_period period(beginTime, endTime);
         return (rentObject->getCost() * period.length().hours()) + (rentObject->getCost() * period.length().minutes() / 60);
-    }
 }
 
 const pt::time_period Rent::getRentPeriod() {
@@ -78,6 +75,7 @@ void Rent::endRent(pt::ptime end) {
     }
     pt::time_period period (beginTime, endTime);
     active = false;
+    rentObject->setRented(false);
     rentCost = (rentObject->getCost() * period.length().hours()) +(rentObject->getCost() * period.length().minutes() / 60);
 
 }

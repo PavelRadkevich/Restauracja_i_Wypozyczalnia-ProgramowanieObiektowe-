@@ -12,7 +12,6 @@ RentObjectRepository::~RentObjectRepository() {}
 
 //Gettery
 const shared_ptr<RentObject> RentObjectRepository::getRentObject(const int ID) const {
-    vectorRentObject[1]->getObjectInfo();
     for (auto t = vectorRentObject.begin(); t < vectorRentObject.end(); t++){
         if ((*t)->getObjectID() == ID )
             return (*t);

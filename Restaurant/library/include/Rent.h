@@ -23,10 +23,11 @@ private:
     double rentCost;
     std::shared_ptr<RentObject> rentObject;
     bool active;
+    bool isHallRent;
 
 public:
     //Konstruktor
-    Rent (const int id_, const shared_ptr<Client> client_, pt::ptime beginTime_, pt::ptime endTime_, shared_ptr<RentObject> rentObject_);
+    Rent (const int id_, const shared_ptr<Client> client_, pt::ptime beginTime_, pt::ptime endTime_, shared_ptr<RentObject> rentObject_, const bool &isHallRent_);
 
     //Destruktor
     ~Rent();

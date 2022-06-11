@@ -6,14 +6,15 @@
 #define RESTAURANT_PERSONAL_H
 
 #include "Table.h"
+#include <memory>
 
 class Personal : public Table{
-private:
+protected:
+    shared_ptr<Table> parent;
 
 public:
     //Konstruktor
-    Personal (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_, const int& numberOfTable_);
-    Personal(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_);
+    Personal (const int& basePrice, const int& objectID_, const int& capacity_, const int& numberOfTable_);
 
     //Destruktor
     ~Personal();
@@ -21,6 +22,7 @@ public:
     //Gettery
     const string getObjectInfo() const;
     const double getActualPriceForHour () const;
+    const shared_ptr<const Table> getParent () const;
 
     //Settery
     void updatePrice ();

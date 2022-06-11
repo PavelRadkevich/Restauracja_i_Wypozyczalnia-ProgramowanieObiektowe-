@@ -38,7 +38,7 @@ const shared_ptr<Hall> RentObject::getTableHallPtr() const {
     return nullptr;
 }
 
-const shared_ptr<const Table> RentObject::getTablePtr() const {
+shared_ptr<const Table> RentObject::getTablePtr() {
     return nullptr;
 }
 
@@ -66,7 +66,12 @@ void RentObject::setRented(const bool &arg){
     rented = arg;
 }
 
-void RentObject::addToHall() {
-    throw RentObjectExceptions("CANNOT BE ADDED TO THE HALL!");
+
+void RentObject::setRentForTables(const bool &) {
+    /*for (auto t = this->getTablesOfHall()->begin(); t < this->getTablesOfHall()->end(); t++)
+    {
+        (*t)->setRented(true);
+    }*/
+    throw RentObjectExceptions ("UNABLE TO SET RENT MODE TO TABLES IN THE HALL!");
 }
 

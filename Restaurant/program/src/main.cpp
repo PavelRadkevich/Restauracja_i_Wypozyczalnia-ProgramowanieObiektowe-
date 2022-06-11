@@ -13,32 +13,47 @@ namespace gr = boost::gregorian;
 
 int main()
 {
-    Hall h1(20, 30, 0.90, "Emilia");
-    Hall h2(5, 15, 0.50, "Agata");
-    Personal p(20, 2, 60, h1, 15);
-    Group g(100, 44, 20, h1, 12, 0.432678);
-    auto *a = new Address("Gomel", "Ilicha", 161);
-    Client c("Ivan", "Trump", 445312890, *a);
+    shared_ptr<Hall> h1 (new Hall(20, 30, 0.90, "Emilia"));
+    shared_ptr<Hall> h2 (new Hall(5, 15, 0.50, "Agata"));
+    shared_ptr<Personal> p (new Personal(20, 2, 60, 15));
+    shared_ptr<Group> g (new Group(100, 44, 20, 12, 0.432678));
+    shared_ptr<Address> a (new Address("Gomel", "Ilicha", 161));
+    shared_ptr<Client> c (new Client("Ivan", "Trump", 445312890, *a));
 
-    cout << p.getObjectInfo() << endl;
-    cout << h1.getObjectInfo() << endl;
-    cout << g.getObjectInfo() << endl;
+    cout << p->getObjectInfo() << endl;
+    cout << h1->getObjectInfo() << endl;
+    cout << g->getObjectInfo() << endl;
+
+
+
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    p->changeHall(h1, p);
+    g->changeHall(h1, g);
+
+    cout << h2->getHallSize() << endl;
+    cout << h1->getHallSize() << endl;
+
+    p->changeHall(h1, p);
+    cout << h2->getHallSize() << endl;
+    cout << h1->getHallSize() << endl;
+    p->changeHall(h1, p);
+    cout << h2->getHallSize() << endl;
+    cout << h1->getHallSize() << endl;
+
+    cout << p->getObjectInfo() << endl;
+
 
     cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 
-    cout << p.getActualPriceForHour() << endl;
-    cout << g.getActualPriceForHour() << endl;
 
-    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    cout << p->getActualPriceForHour() << endl;
+    cout << g->getActualPriceForHour() << endl;
 
-    p.changeHall(make_shared<Hall>(h2));
-
-    cout << p.getObjectInfo() << endl;
     cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
     RentObjectRepository ror;
-    ror.addRentObject(make_shared<RentObject>(p));
-    ror.addRentObject(make_shared<RentObject>(h1));
-    ror.addRentObject(make_shared<RentObject>(h2));
+    ror.addRentObject(p);
+    ror.addRentObject(h1);
+    ror.addRentObject(h2);
     cout << ror.getAllRentObjects() << endl;
 
     cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
@@ -49,14 +64,24 @@ int main()
     pt::time_period period (then, before);
     cout << "PERIOD :       " << period.length().hours()  << " " << period.length().minutes() << endl;
     cout <<  period.length().minutes()<< endl  << "!!!!!!!!!" << endl;
-    Rent r (1, make_shared<Client>(c), then, after , make_shared<RentObject>(g));
-    cout << r.getRentCost();
-    r.endRent(before);
-    cout << endl << r.getEndCost();
+    auto r = new Rent(1, c, then, after , g, 0);
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    cout << r->getRentInfo() << endl;
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+    cout << r->getRentCost();
+    r->endRent(before);
+    cout << endl << r->getEndCost();
+    cout << endl << p->getTablePtr() << endl;
 
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 
-    if (p.getTablePtr() == nullptr)
-        cout << "БЛЯЯЯЯЯЯТЬ!!!!!!!!1";
-    return 0;
+    cout << h2->getIDOfTablesOfHall() << "      " << h2->getHallSize() << endl;
+    cout << h1->getIDOfTablesOfHall() << "      " << h1->getHallSize() << endl;
+
+    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+
+    auto rH = new Rent(2, c, then, before, h1, 1);
+    cout << rH->getRentInfo() << "\n\n" << rH->getRentCost();
+
 }
 

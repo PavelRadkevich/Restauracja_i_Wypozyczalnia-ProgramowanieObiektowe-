@@ -8,11 +8,11 @@
 #include "RentObject.h"
 #include <vector>
 
-class Hall : public RentObject, enable_shared_from_this<Hall>{
+class Hall : public RentObject{
 protected:
     string name;
     double priceFactor;
-    vector<shared_ptr<Table>> tables {};
+    vector<shared_ptr<Table>> tables;
 
 public:
     //Konstruktor
@@ -25,11 +25,15 @@ public:
     const double  getPriceFactor () const;
     const string getName () const;
     const string getObjectInfo () const;
-    const vector<shared_ptr<Table>> *getTablesOfHall () const ;
+    const vector<shared_ptr<Table>> *getTablesOfHall () const;
+    const string getIDOfTablesOfHall () const;
+    const int getHallSize ()const;
 
     //Settery
-    void addTable (shared_ptr<Table>);
+    void addTable (const shared_ptr<Table>&);
     void removeTable(shared_ptr<Table>);
+    void setRentForTables (const bool&) override;
+    void updatePrice ();
 
 
 };

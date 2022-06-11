@@ -10,10 +10,11 @@
 class Group : public Table{
 protected:
     double sale;
+    shared_ptr<Table> parent;
 
 public:
     //Konstruktor
-    Group (const int& basePrice, const int& objectID_, const int& capacity_, const Hall& hall_, const int& numberOfTable, const double& sale_);
+    Group (const int& basePrice, const int& objectID_, const int& capacity_, const int& numberOfTable, const double& sale_);
 
     //Destruktor
     ~Group();
