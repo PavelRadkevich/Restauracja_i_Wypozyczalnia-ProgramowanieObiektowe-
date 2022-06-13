@@ -21,7 +21,6 @@ public:
 
     //Gettery
     const string getObjectInfo() const;
-    const double getActualPriceForHour () const;
     const shared_ptr<const Table> getParent () const;
 
     //Settery

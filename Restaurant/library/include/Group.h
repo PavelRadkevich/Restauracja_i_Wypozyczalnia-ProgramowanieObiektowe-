@@ -20,8 +20,8 @@ public:
     ~Group();
 
     //Gettery
-    const double getActualPriceForHour () const;
     const string getObjectInfo() const;
+    const double getSale () const;
 
     //Settery
     void updatePrice ();

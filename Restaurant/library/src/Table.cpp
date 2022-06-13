@@ -23,9 +23,8 @@ shared_ptr<Table> Table::create(const int &basePrice, const int &objectID_, cons
 
 void Table::init() {
 I = shared_from_this();
-std::cout << endl <<"Init()" << endl;
-std::cout << shared_from_this() << endl;
-I = shared_from_this();
+//std::cout << endl <<"Init()" << endl;
+//std::cout << shared_from_this() << endl;
 
 }
 
@@ -38,10 +37,6 @@ const string Table::getObjectInfo() const {
     return "Stolik nie ma przypisanego typu!";
 }
 
-const double Table::getActualPriceForHour() const {
-    return 0;
-}
-
 const shared_ptr<Hall> Table::getTableHallPtr() const {
 
     return hall;
@@ -52,18 +47,24 @@ shared_ptr<const Table> Table::getTablePtr(){
 }
 
 const shared_ptr<Hall> Table::getHallPtr() const {
-    if (hall == nullptr)
-        throw RentObjectExceptions("TABLE NOT HAVE A HALL!");
-    else
     return hall;
 }
 
 
+const int Table::getCapacity() const {
+    return capacity;
+}
+
+const int Table::getTableNumber() const {
+    return numberOfTable;
+}
 
 //Settery
 void Table::changeHall(HallPtr newHall, shared_ptr<Table> table1) {
     if (newHall == nullptr)
-    throw RentObjectExceptions ("INVALID HALL IN FUCTION CHANGEHALL!");
+        throw RentObjectExceptions ("INVALID HALL IN FUCTION CHANGEHALL!");
+    if (newHall == hall)
+        throw RentObjectExceptions ("THIS HALL IS ALREADY SET!");
     if (hall != nullptr)
     hall->removeTable(table1);
 
@@ -77,14 +78,13 @@ void Table::updatePrice() {
     throw RentObjectExceptions("IMPOSSIBLE UPDATE PRICE!");
 }
 
-void Table::setHall(shared_ptr<Hall> newHall, shared_ptr<Table> table1) {
+void Table::setHall(shared_ptr<Hall> newHall) {
     if (newHall == nullptr)
-        throw RentObjectExceptions ("INVALID HALL IN FUCTION CHANGEHALL!");
+        throw RentObjectExceptions ("INVALID HALL IN FUCTION SETHALL!");
     hall = newHall;
-    hall->addTable(table1);
-
     this->updatePrice();
 }
+
 
 
 

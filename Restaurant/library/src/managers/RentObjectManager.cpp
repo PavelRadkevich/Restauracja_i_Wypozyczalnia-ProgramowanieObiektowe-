@@ -66,3 +66,15 @@ const void RentObjectManager::unregisterRentObject(shared_ptr<RentObject> rentOb
     }
 }
 
+const void RentObjectManager::changeHall(shared_ptr<Hall> newHall, shared_ptr<Table> table) {
+    if (newHall == nullptr)
+        throw ManagersExceptions ("INVALID HALL IN FUCTION CHANGEHALL!");
+    if (newHall == table->getHallPtr())
+        throw ManagersExceptions ("THIS HALL IS ALREADY SET!");
+    if (table->getHallPtr() != nullptr)
+        table->getHallPtr()->removeTable(table);
+
+    table->setHall(newHall);
+    newHall->addTable(table);
+}
+

@@ -12,6 +12,7 @@ using namespace std;
 RentObject::RentObject(const int &basePrice_, const int &objectID): basePrice(basePrice_), objectID(objectID) {
     rented = false;
     archive = false;
+    cost = 0;
 }
 
 
@@ -50,6 +51,7 @@ const vector<shared_ptr<Table>> *RentObject::getTablesOfHall() const {
 
 
 const double RentObject::getCost() const {
+    if (cost == 0) throw RentObjectExceptions("INVALID COST!");
     return cost;
 }
 

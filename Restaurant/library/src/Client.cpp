@@ -25,7 +25,7 @@ const string Client::getClientInfo() const {
 }
 
 const string Client::getFullClientInfo() const {
-    return firstName + " " + lastName + ", " + std::to_string(phone) + ". Address:: " + address->getAddressInfo();
+    return this->getClientInfo() + ". Address: " + address->getAddressInfo();
 }
 
 const int Client::getClientPhone() const {
@@ -44,9 +44,12 @@ const bool Client::isArchive() const {
     return archive;
 }
 
+const shared_ptr<Address> Client::getAddress() const {
+    return address;
+}
+
+//Settery
 const void Client::setArchive(const bool &archive_) {
     archive = archive_;
 }
 
-
-//Settery

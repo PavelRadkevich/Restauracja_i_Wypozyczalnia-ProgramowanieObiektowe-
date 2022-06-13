@@ -33,6 +33,7 @@ public:
     const string getNames ();
     const int getId ();
     const bool isArchive () const;
+    const shared_ptr<Address> getAddress () const;
 
     //Settery
     const void setArchive (const bool &archive_);

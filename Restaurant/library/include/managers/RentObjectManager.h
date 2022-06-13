@@ -11,6 +11,8 @@ using namespace std;
 
 class RentObject;
 class RentObjectRepository;
+class Hall;
+class Table;
 class RentObjectManager {
 private:
     shared_ptr<RentObjectRepository> repository;
@@ -29,6 +31,7 @@ public:
     const shared_ptr<RentObject> registerGroupTable (const int& basePrice, const int& objectID_, const int& capacity_, const int& numberOfTable, const double& sale_);
     const shared_ptr<RentObject> registerHall (const int &basePrice_, const int &objectID, const double& priceFactor_, const string& name_);
     const void unregisterRentObject (shared_ptr<RentObject> rentObject_);
+    static const void changeHall (shared_ptr<Hall> newHall_, shared_ptr<Table>);
 };
 
 

@@ -30,15 +30,16 @@ public:
 
     //Gettery
     virtual const string getObjectInfo ()const;
-    virtual const double getActualPriceForHour () const;
     const shared_ptr<Hall> getTableHallPtr () const override;
     shared_ptr<const Table> getTablePtr ();
     const shared_ptr<Hall> getHallPtr ()const;
+    const int getCapacity () const;
+    const int getTableNumber () const;
 
     //Settery
     void changeHall (HallPtr newHall, shared_ptr<Table> table1);
     virtual void updatePrice ();
-    void setHall (shared_ptr<Hall> newHall, shared_ptr<Table> table1);
+    void setHall (shared_ptr<Hall> newHall);
 
 };
 

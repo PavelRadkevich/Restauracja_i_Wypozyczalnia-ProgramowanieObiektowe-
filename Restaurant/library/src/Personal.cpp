@@ -13,31 +13,10 @@ Table(basePrice, objectID_, capacity_, numberOfTable_){
     I = p;
 }
 
-
-/*shared_ptr<Personal> Personal::create(const int &basePrice, const int &objectID_, const int &capacity_, const Hall &hall_,
-                                   const int &numberOfTable_) {
-    shared_ptr<Personal> p (new Personal(basePrice, objectID_, capacity_, hall_, numberOfTable_));
-    p->init();
-    return p;
-}
-void Personal::init() {
-    std::cout << "init()" << std::endl;
-    std::cout << shared_from_this() << std::endl;
-}
-*/
-
 //Destruktor
 Personal::~Personal(){}
 
 //Gettery
-const double Personal::getActualPriceForHour() const {
-    if (hall == nullptr)
-        throw RentObjectExceptions("UNABLE TO CALCULATE PRICE, TABLE NOT HAVE A HALL!");
-    else {
-        if (basePrice * hall->getPriceFactor() * capacity != cost) throw RentObjectExceptions("NOT ACTUAL PRICE!");
-        return basePrice * hall->getPriceFactor() * capacity;
-    }
-}
 
 const string Personal::getObjectInfo() const {
     string status, halls;

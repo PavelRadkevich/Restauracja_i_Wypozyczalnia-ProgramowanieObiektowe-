@@ -77,10 +77,10 @@ const string Hall::getIDOfTablesOfHall() const {
 }
 
 void Hall::updatePrice() {
-    cost = 0;
+    cost = basePrice;
     for (auto t = tables.begin(); t < tables.end(); t++)
         cost += (*t)->getBasePrice();
-    cost * priceFactor * 0.5;
+    cost = cost * priceFactor * 0.5;
 }
 
 

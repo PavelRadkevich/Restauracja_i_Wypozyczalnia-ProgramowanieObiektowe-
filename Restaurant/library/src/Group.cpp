@@ -16,16 +16,6 @@ sale(sale_) ,Table(basePrice, objectID_, capacity_, numberOfTable_){
 Group::~Group(){}
 
 //Gettery
-const double Group::getActualPriceForHour() const {
-    if (hall == nullptr)
-        throw RentObjectExceptions("UNABLE TO CALCULATE PRICE, TABLE NOT HAVE A HALL!");
-    else {
-        if (basePrice * hall->getPriceFactor() * capacity * sale != cost)
-            throw RentObjectExceptions("NOT ACTUAL PRICE!");
-        return basePrice * hall->getPriceFactor() * capacity * sale;
-    }
-}
-
 const string Group::getObjectInfo() const {
     string status, halls;
     if (!rented)
@@ -49,4 +39,8 @@ const string Group::getObjectInfo() const {
 
 void Group::updatePrice() {
     cost = basePrice * hall->getPriceFactor() * capacity * sale;
+}
+
+const double Group::getSale() const {
+    return sale;
 }
