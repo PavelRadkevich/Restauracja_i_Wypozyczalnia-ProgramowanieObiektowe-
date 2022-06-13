@@ -22,9 +22,9 @@ public:
 
     //Gettery
     const shared_ptr<RentObject> getRentObject (const int ID) const;
-    const int getRentObjectSize ()const;
+    const int getRepositorySize ()const;
     const vector<shared_ptr<RentObject>> *getAllTableInHall (const shared_ptr<Hall>, vector<shared_ptr<RentObject>>*) const;
-    const string getAllRentObjects ();
+    const vector<shared_ptr<RentObject>> *getAllRentObjects () const;
 
     //Settery
     void addRentObject (const shared_ptr<RentObject>);

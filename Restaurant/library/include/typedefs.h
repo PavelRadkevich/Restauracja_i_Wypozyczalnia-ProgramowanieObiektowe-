@@ -10,7 +10,6 @@
 #include "Hall.h"
 #include "memory"
 #include "repositories/ClientRepository.h"
-#include "repositories/AddressRepository.h"
 #include "repositories/RentObjectRepository.h"
 #include "repositories/RentRepository.h"
 

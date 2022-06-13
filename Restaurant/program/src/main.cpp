@@ -18,7 +18,7 @@ int main()
     shared_ptr<Personal> p (new Personal(20, 2, 60, 15));
     shared_ptr<Group> g (new Group(100, 44, 20, 12, 0.432678));
     shared_ptr<Address> a (new Address("Gomel", "Ilicha", 161));
-    shared_ptr<Client> c (new Client("Ivan", "Trump", 445312890, *a));
+    shared_ptr<Client> c (new Client(1, "Ivan", "Trump", 445312890, a));
 
     cout << p->getObjectInfo() << endl;
     cout << h1->getObjectInfo() << endl;

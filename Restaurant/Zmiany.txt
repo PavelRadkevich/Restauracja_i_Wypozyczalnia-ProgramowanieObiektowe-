@@ -31,3 +31,5 @@ Tworzymy argument cost dla klasy Rent, dodatkowo jeszcze tworzymy kilka metod, z
 Bool Rented przemieszczmay do RentObject
 
 Przy dodaniu stolika do restauracji, trzba sprawdzać czy ma on przypisany Hall
+
+Atrybut Cost z klasy RentObject, trzeba od razu podczas wynajmu zachować jaką stałą, bo potem możemy coś zmienić w stoliku, a client pod koniec rezerwacji otrzyma inną cenę

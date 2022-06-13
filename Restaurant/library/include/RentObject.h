@@ -20,6 +20,7 @@ protected:
     shared_ptr<Table> table;
     double cost;
     bool rented;
+    bool archive;
 public:
     //Konstruktor
     RentObject (const int& basePrice_, const int &objectID);
@@ -37,11 +38,13 @@ public:
     virtual const vector<shared_ptr<Table>>* getTablesOfHall () const;
     const double getCost () const;
     const bool isRented () const;
+    const bool isArchive () const;
 
     //Settery
     virtual void updatePrice ();
     virtual void setRented(const bool &arg);
     virtual void setRentForTables (const bool&);
+    void setArchive (const bool& arg);
 };
 
 

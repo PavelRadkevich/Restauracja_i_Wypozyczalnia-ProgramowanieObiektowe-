@@ -12,14 +12,16 @@ using namespace std;
 
 class Client : enable_shared_from_this<Client> {
 private:
+    int id;
     string firstName;
     string lastName;
     int phone;
     shared_ptr<Address> address;
+    bool archive;
 
 public:
     //Konstruktor
-    Client(const string& firstName_, const string& lastName_, const int& phone_, const Address &address_);
+    Client(const int &id, const string& firstName_, const string& lastName_, const int& phone_, const shared_ptr<Address> &address_);
 
     //Destruktor
     ~Client();
@@ -29,7 +31,11 @@ public:
     const string getFullClientInfo () const;
     const int getClientPhone () const;
     const string getNames ();
+    const int getId ();
+    const bool isArchive () const;
 
+    //Settery
+    const void setArchive (const bool &archive_);
 };
 
 

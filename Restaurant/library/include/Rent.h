@@ -22,7 +22,7 @@ private:
     pt::ptime endTime;
     double rentCost;
     std::shared_ptr<RentObject> rentObject;
-    bool active;
+    bool archive;
     bool isHallRent;
 
 public:
@@ -37,9 +37,15 @@ public:
     const double getRentCost ();
     const pt::time_period getRentPeriod ();
     const double getEndCost ();
+    const int getID ();
+    const shared_ptr<Client> getClient () const;
+    const shared_ptr<RentObject> getRentObject () const;
+    const bool isArchive () const;
 
     //Settery
     void endRent (pt::ptime);
+    void setRent (const bool &arg);
+    void setArchive (const bool &arg);
 
 };
 

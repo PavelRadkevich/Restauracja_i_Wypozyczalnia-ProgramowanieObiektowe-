@@ -11,6 +11,7 @@ using namespace std;
 //Konstruktor
 RentObject::RentObject(const int &basePrice_, const int &objectID): basePrice(basePrice_), objectID(objectID) {
     rented = false;
+    archive = false;
 }
 
 
@@ -57,6 +58,10 @@ const bool RentObject::isRented() const {
 }
 
 
+const bool RentObject::isArchive() const {
+    return archive;
+}
+
 //Settery
 void RentObject::updatePrice() {
     throw RentObjectExceptions("UNABLE TO UPDATE PRICE!");
@@ -75,3 +80,6 @@ void RentObject::setRentForTables(const bool &) {
     throw RentObjectExceptions ("UNABLE TO SET RENT MODE TO TABLES IN THE HALL!");
 }
 
+void RentObject::setArchive(const bool& arg) {
+    archive = arg;
+}

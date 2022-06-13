@@ -11,26 +11,21 @@ ClientRepository::ClientRepository() {}
 ClientRepository::~ClientRepository() {}
 
 //Gettery
-const shared_ptr<Client> ClientRepository::getClient(const int phone) const {
+const shared_ptr<Client> ClientRepository::getClientByID(const int id) const {
     for (auto t = vectorClient.begin(); t < vectorClient.end(); t++)
     {
-        if ((*t)->getClientPhone() == phone)
+        if ((*t)->getClientPhone() == id)
             return (*t);
     }
     return nullptr;
 }
 
-const int ClientRepository::getClientSize() {
+const int ClientRepository::getRepositorySize() const {
     return vectorClient.size();
 }
 
-const string ClientRepository::getAllClients() {
-    string info = "";
-    for (auto t = vectorClient.begin(); t < vectorClient.end(); t++)
-    {
-        info = info + (*t)->getClientInfo() + "\n";
-    }
-    return info;
+const vector<shared_ptr<Client>>* ClientRepository::getAllClients() const {
+    return &vectorClient;
 }
 
 //Settery
@@ -44,4 +39,3 @@ void ClientRepository::removeClient(const shared_ptr<Client> ror) {
             vectorClient.erase(t);
     }
 }
-

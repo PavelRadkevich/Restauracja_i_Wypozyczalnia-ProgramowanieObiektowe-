@@ -19,7 +19,7 @@ id(id_), client(client_), beginTime(beginTime_), endTime(endTime_), rentObject(r
     if (endTime < beginTime || endTime == pt::not_a_date_time) throw RentExceptions("INVALID END TIME");
     if (client == nullptr) throw RentExceptions("INVALID CLIENT");
     if (rentObject == nullptr) throw RentExceptions("INVALID RENT OBJECT");
-    active = true;
+    archive = false;
 
     if (!rentObject->isRented())
         rentObject->setRented(true);
@@ -56,11 +56,30 @@ const pt::time_period Rent::getRentPeriod() {
 }
 
 const double Rent::getEndCost() {
-    if (!active)
+    if (archive)
     return rentCost;
     else throw RentExceptions("END COST BEFORE END OF RENT!");
 }
 
+
+const int Rent::getID() {
+    return id;
+}
+
+
+const shared_ptr<Client> Rent::getClient() const {
+    return  client;
+}
+
+
+const shared_ptr<RentObject> Rent::getRentObject() const {
+    return rentObject;
+}
+
+
+const bool Rent::isArchive() const {
+    return archive;
+}
 
 //Settery
 void Rent::endRent(pt::ptime end) {
@@ -74,10 +93,16 @@ void Rent::endRent(pt::ptime end) {
             throw RentExceptions("INVALID END TIME AT THE END OF RENT!");
     }
     pt::time_period period (beginTime, endTime);
-    active = false;
     rentObject->setRented(false);
     rentCost = (rentObject->getCost() * period.length().hours()) +(rentObject->getCost() * period.length().minutes() / 60);
 
 }
 
+void Rent::setRent(const bool& arg) {
+    archive = arg;
+}
+
+void Rent::setArchive(const bool &arg) {
+    archive = arg;
+}
 

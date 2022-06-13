@@ -20,7 +20,7 @@ const shared_ptr<RentObject> RentObjectRepository::getRentObject(const int ID) c
 }
 
 
-const int RentObjectRepository::getRentObjectSize() const {
+const int RentObjectRepository::getRepositorySize() const {
     return vectorRentObject.size();
 }
 
@@ -35,13 +35,8 @@ const vector<shared_ptr<RentObject>> *RentObjectRepository::getAllTableInHall(co
     return tables;
 }
 
-const string RentObjectRepository::getAllRentObjects() {
-    string info = "";
-    for (auto t = vectorRentObject.begin(); t < vectorRentObject.end(); t++)
-    {
-        info = info + (*t)->getObjectInfo() + "\n";
-    }
-    return info;
+const vector<shared_ptr<RentObject>> *RentObjectRepository::getAllRentObjects() const{
+    return &vectorRentObject;
 }
 
 

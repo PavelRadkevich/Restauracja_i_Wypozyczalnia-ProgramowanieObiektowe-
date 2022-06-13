@@ -5,8 +5,8 @@
 #include "repositories/StorageContainer.h"
 
 //Konstruktor
-StorageContainer::StorageContainer( AddressRepository *ar, ClientRepository *cr,
-RentObjectRepository *ror, RentRepository *rr) : addressRepository(ar), clientRepository(cr),
+StorageContainer::StorageContainer(ClientRepository *cr,
+RentObjectRepository *ror, RentRepository *rr) :clientRepository(cr),
 rentObjectRepository(ror), rentRepository(rr){
 
 }
@@ -16,11 +16,6 @@ StorageContainer::~StorageContainer() {}
 
 
 //Gettery
-
-const AddressRepository* StorageContainer::getAddressRepository() const {
-    return addressRepository;
-}
-
 const ClientRepository* StorageContainer::getClientRepositry() const {
     return clientRepository;
 }

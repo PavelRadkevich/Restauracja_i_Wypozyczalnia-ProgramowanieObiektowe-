@@ -6,12 +6,14 @@
 #include "exceptions/ClientExceptions.h"
 
 //Konstruktor
-Client::Client(const string& firstName_, const string &lastName_, const int &phone_, const Address& address_): firstName(firstName_), lastName(lastName_),
-phone(phone_), address(make_shared<Address>(address_)) {
+Client::Client(const int &id, const string& firstName_, const string &lastName_, const int &phone_, const shared_ptr<Address>& address_):
+id(id), firstName(firstName_), lastName(lastName_),phone(phone_), address(address_) {
+    if (id < 1) throw ClientExceptions("INVALID ID");
     if (firstName.empty()) throw ClientExceptions("INVALID FIRST NAME");
     if (lastName.empty()) throw ClientExceptions("INVALID LAST NAME");
     if (phone < 1) throw ClientExceptions ("INVALID PHONE");
     if (address->getAddressInfo().empty() or address == nullptr) throw ClientExceptions ("INVALID ADDRESS!");
+    archive = false;
 }
 
 //Destruktor
@@ -33,3 +35,18 @@ const int Client::getClientPhone() const {
 const string Client::getNames() {
     return firstName + " " + lastName;
 }
+
+const int Client::getId() {
+    return id;
+}
+
+const bool Client::isArchive() const {
+    return archive;
+}
+
+const void Client::setArchive(const bool &archive_) {
+    archive = archive_;
+}
+
+
+//Settery

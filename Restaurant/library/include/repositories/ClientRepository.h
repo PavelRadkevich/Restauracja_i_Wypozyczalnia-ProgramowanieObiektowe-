@@ -25,9 +25,9 @@ public:
     ~ClientRepository();
 
     //Gettery
-    const shared_ptr<Client> getClient (const int phone) const;
-    const int getClientSize ();
-    const string getAllClients ();
+    const shared_ptr<Client> getClientByID (const int phone) const;
+    const int getRepositorySize () const;
+    const vector<shared_ptr<Client>>* getAllClients () const;
 
     //Settery
     void addClient (const shared_ptr<Client>);
