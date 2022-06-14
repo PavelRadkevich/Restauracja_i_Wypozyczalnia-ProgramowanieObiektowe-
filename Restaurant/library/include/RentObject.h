@@ -40,7 +40,7 @@ public:
     const bool isArchive () const;
 
     //Settery
-    virtual void updatePrice ();
+    virtual void updatePrice () = 0;
     void setRented(const bool &arg);
     virtual void setRentForTables (const bool&);
     void setArchive (const bool& arg);

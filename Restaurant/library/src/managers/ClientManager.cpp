@@ -13,32 +13,32 @@
 
 
 //Gettery
-const shared_ptr<Client> ClientManager::getClient(const int &id) const {
-    return repository->getClientByID(id);
+const shared_ptr<Client> ClientManager::getClient(const shared_ptr<ClientRepository> cr, const int &id){
+    return cr->getClientByID(id);
 }
 
-const vector<shared_ptr<Client>> *ClientManager::getAllClients() const {
-    return repository->getAllClients();
+const vector<shared_ptr<Client>> *ClientManager::getAllClients(const shared_ptr<ClientRepository> cr){
+    return cr->getAllClients();
 }
 
 
 //Settery
 const shared_ptr<Client>
-ClientManager::registerClient(const int &id, const string &firstName_, const string &lastName_, const int &phone_,
+ClientManager::registerClient(const shared_ptr<ClientRepository> cr, const int &id, const string &firstName_, const string &lastName_, const int &phone_,
                               const shared_ptr<Address> &address_) {
-    if (repository->getClientByID(id) != nullptr)
-        return repository->getClientByID(id);
+    if (cr->getClientByID(id) != nullptr)
+        return cr->getClientByID(id);
     else {
         shared_ptr<Client> client = make_shared<Client>(id, firstName_, lastName_, phone_, address_);
-        repository->addClient(client);
+        cr->addClient(client);
         return client;
     }
 
     return shared_ptr<Client>();
 }
 
-const void ClientManager::unregisterClient(shared_ptr<Client> client_) {
-    if (repository->getClientByID(client_->getId()) == nullptr)
+const void ClientManager::unregisterClient(const shared_ptr<ClientRepository> cr, shared_ptr<Client> client_) {
+    if (cr->getClientByID(client_->getId()) == nullptr)
         throw ManagersExceptions("CLIENT NOT REGISTERED!");
     else {
         client_->setArchive(true);

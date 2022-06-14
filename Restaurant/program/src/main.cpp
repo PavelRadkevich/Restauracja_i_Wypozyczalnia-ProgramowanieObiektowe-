@@ -5,7 +5,12 @@
 #include "Hall.h"
 #include "Group.h"
 #include "repositories/RentObjectRepository.h"
+#include "repositories/ClientRepository.h"
+#include "repositories/RentRepository.h"
 #include "Rent.h"
+#include "managers/ClientManager.h"
+#include "managers/RentManager.h"
+#include "managers/RentObjectManager.h"
 
 using namespace std;
 namespace pt = boost::posix_time;
@@ -13,48 +18,51 @@ namespace gr = boost::gregorian;
 
 int main()
 {
-    shared_ptr<Hall> h1 (new Hall(20, 30, 0.90, "Emilia"));
-    shared_ptr<Hall> h2 (new Hall(5, 15, 0.50, "Agata"));
-    shared_ptr<Personal> p (new Personal(20, 2, 60, 15));
-    shared_ptr<Group> g (new Group(100, 44, 20, 12, 0.432678));
+    shared_ptr<ClientRepository> cr = make_shared<ClientRepository>();
+    shared_ptr<RentObjectRepository> ror = make_shared<RentObjectRepository>();
+    shared_ptr<RentRepository> rr = make_shared<RentRepository>();
+    shared_ptr<Hall> h1 = RentObjectManager::registerHall(ror, 20, 30, 0.90, "Emilia");
+    shared_ptr<Hall> h2 = RentObjectManager::registerHall(ror, 5, 15, 0.50, "Agata");
+    shared_ptr<Personal> p = RentObjectManager::registerPersonalTable(ror, 20, 2, 60, 15);
+    shared_ptr<Group> g = RentObjectManager::registerGroupTable(ror, 100, 44, 20, 12, 0.432678);
     shared_ptr<Address> a (new Address("Gomel", "Ilicha", 161));
-    shared_ptr<Client> c (new Client(1, "Ivan", "Trump", 445312890, a));
+    shared_ptr<Client> c = ClientManager::registerClient(cr, 1, "Ivan", "Trump", 445312890, a);
+
+    cout << "STWORZONE 6 OBJEKTÓW: " << endl;
+    cout << "PIERWSZA SALA: " <<  h1->getObjectInfo() << endl;
+    cout << "DRUGA SALA: " << h2->getObjectInfo() << endl;
+    cout << "PRYWATNY STOLIK: " << p->getObjectInfo() << endl;
+    cout << "GRUPOWY STOLIK: " << g->getObjectInfo() << endl;
+    cout << "ADRES: " << a->getAddressInfo() << endl;
+    cout << "KLIENT: " << c->getClientInfo() << endl;
+
+    cout << "///////////////////////////////////////////////////////////////////////////////////////////////////////////" << endl;
+
+
+    cout << h2->getHallSize() << endl;
+    cout << h1->getHallSize() << endl;
+
+    //p->changeHall(h1, p);
+    cout << h2->getHallSize() << endl;
+    cout << h1->getHallSize() << endl;
+    //p->changeHall(h1, p);
+    cout << h2->getHallSize() << endl;
+    cout << h1->getHallSize() << endl;
 
     cout << p->getObjectInfo() << endl;
-    cout << h1->getObjectInfo() << endl;
-    cout << g->getObjectInfo() << endl;
-
-
-
-    cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-    p->changeHall(h1, p);
-    g->changeHall(h1, g);
-
-    cout << h2->getHallSize() << endl;
-    cout << h1->getHallSize() << endl;
-
-    p->changeHall(h1, p);
-    cout << h2->getHallSize() << endl;
-    cout << h1->getHallSize() << endl;
-    p->changeHall(h1, p);
-    cout << h2->getHallSize() << endl;
-    cout << h1->getHallSize() << endl;
-
-    cout << p->getObjectInfo() << endl;
 
 
     cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 
 
-    cout << p->getActualPriceForHour() << endl;
-    cout << g->getActualPriceForHour() << endl;
+    //cout << p->getActualPriceForHour() << endl;
+    //cout << g->getActualPriceForHour() << endl;
 
     cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
-    RentObjectRepository ror;
-    ror.addRentObject(p);
-    ror.addRentObject(h1);
-    ror.addRentObject(h2);
-    cout << ror.getAllRentObjects() << endl;
+    ror->addRentObject(p);
+    ror->addRentObject(h1);
+    ror->addRentObject(h2);
+    cout << ror->getAllRentObjects() << endl;
 
     cout << "!!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
 

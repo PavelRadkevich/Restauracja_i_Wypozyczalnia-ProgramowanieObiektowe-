@@ -25,15 +25,15 @@ public:
     //Destruktor
 
     //Gettery
-    const vector<shared_ptr<Rent>> *getClientRents (const shared_ptr<Client> client) const;
-    const shared_ptr<Rent> getRentObjectRent (const shared_ptr<RentObject> rentObject_) const;
-    const vector<shared_ptr<Rent>> *getAllActualRents ();
-    const double checkClientRentBalance (const shared_ptr<Client> client_) const;
+    static const vector<shared_ptr<Rent>> *getClientRents (const shared_ptr<RentRepository> rr, const shared_ptr<Client> client);
+    static const shared_ptr<Rent> getRentObjectRent (const shared_ptr<RentRepository> rr, const shared_ptr<RentObject> rentObject_);
+    static const vector<shared_ptr<Rent>> *getAllActualRents (const shared_ptr<RentRepository> rr);
+    static const double checkClientRentBalance (const shared_ptr<RentRepository> rr, const shared_ptr<Client> client_);
 
     //Settery
-    const shared_ptr<Rent> startRent (const int id_, const shared_ptr<Client> client_, pt::ptime beginTime_,
-                                           pt::ptime endTime_, shared_ptr<RentObject> rentObject_, const bool &isHallRent_) const;
-    void endRent (const shared_ptr<RentObject> rentObject_, const pt::ptime endRent_) const;
+    static const shared_ptr<Rent> startRent (const shared_ptr<RentRepository> rr, const int id_, const shared_ptr<Client> client_, pt::ptime beginTime_,
+                                           pt::ptime endTime_, shared_ptr<RentObject> rentObject_, const bool &isHallRent_);
+    static void endRent (const shared_ptr<RentRepository> rr, const shared_ptr<RentObject> rentObject_, const pt::ptime endRent_);
 
 };
 

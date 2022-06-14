@@ -14,21 +14,21 @@
 //Destruktor
 
 //Gettery
-const vector<shared_ptr<Rent>> *RentManager::getClientRents (const shared_ptr<Client> client_) const{
-    return repository->getClientRents(client_);
+const vector<shared_ptr<Rent>> *RentManager::getClientRents (const shared_ptr<RentRepository> rr, const shared_ptr<Client> client_){
+    return rr->getClientRents(client_);
 }
 
-const shared_ptr<Rent> RentManager::getRentObjectRent(const shared_ptr<RentObject> rentObject_) const {
-    return repository->getRentObjectRent(rentObject_);
+const shared_ptr<Rent> RentManager::getRentObjectRent(const shared_ptr<RentRepository> rr, const shared_ptr<RentObject> rentObject_){
+    return rr->getRentObjectRent(rentObject_);
 }
 
-const vector<shared_ptr<Rent>> *RentManager::getAllActualRents() {
-    return repository->getAllActualRents();
+const vector<shared_ptr<Rent>> *RentManager::getAllActualRents(const shared_ptr<RentRepository> rr) {
+    return rr->getAllActualRents();
 }
 
-const double RentManager::checkClientRentBalance(shared_ptr<Client> client_) const{
+const double RentManager::checkClientRentBalance(const shared_ptr<RentRepository> rr, shared_ptr<Client> client_){
     double sum;
-    for (auto t = repository->getAllArchiveRents()->begin(); t < repository->getAllArchiveRents()->end(); t++){
+    for (auto t = rr->getAllArchiveRents()->begin(); t < rr->getAllArchiveRents()->end(); t++){
         if ((*t)->getClient() == client_)
             sum += (*t)->getEndCost();
     }
@@ -36,8 +36,8 @@ const double RentManager::checkClientRentBalance(shared_ptr<Client> client_) con
 }
 
 const shared_ptr<Rent>
-RentManager::startRent(const int id_, const shared_ptr<Client> client_, pt::ptime beginTime_, pt::ptime endTime_,
-                            shared_ptr<RentObject> rentObject_, const bool &isHallRent_) const {
+RentManager::startRent(const shared_ptr<RentRepository> rr, const int id_, const shared_ptr<Client> client_,
+                       pt::ptime beginTime_, pt::ptime endTime_, shared_ptr<RentObject> rentObject_, const bool &isHallRent_){
     if (client_->isArchive() || rentObject_->isArchive())
         throw ManagersExceptions("CLIENT OR RENTOBJECT IS ARCHIVE!");
 
@@ -45,15 +45,15 @@ RentManager::startRent(const int id_, const shared_ptr<Client> client_, pt::ptim
         throw ManagersExceptions("RENT OBJECT IS ALREADY RENTED!");
 
     shared_ptr<Rent> rent_ = make_shared<Rent>(id_, client_, beginTime_, endTime_, rentObject_, isHallRent_);
-    repository->addCurrentRent(rent_);
+    rr->addCurrentRent(rent_);
     return rent_;
 }
 
-void RentManager::endRent(const shared_ptr<RentObject> rentObject_, const pt::ptime endRent_) const{
-    shared_ptr<Rent> rent_ = repository->getRentObjectRent(rentObject_);
+void RentManager::endRent(const shared_ptr<RentRepository> rr, const shared_ptr<RentObject> rentObject_, const pt::ptime endRent_){
+    shared_ptr<Rent> rent_ = rr->getRentObjectRent(rentObject_);
     rent_->endRent(endRent_);
     rent_->setArchive(true);
-    repository->archiveRent(rent_);
+    rr->archiveRent(rent_);
 }
 
 //Settery

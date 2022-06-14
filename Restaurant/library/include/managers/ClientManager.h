@@ -22,12 +22,13 @@ public:
     //Destruktor
 
     //Gettery
-    const shared_ptr<Client> getClient (const int &id) const;
-    const vector<shared_ptr<Client>> *getAllClients () const;
+    static const shared_ptr<Client> getClient (const shared_ptr<ClientRepository> cr, const int &id);
+    static const vector<shared_ptr<Client>> *getAllClients (const shared_ptr<ClientRepository> cr);
 
     //Settery
-    const shared_ptr<Client> registerClient (const int &id, const string& firstName_, const string& lastName_, const int& phone_, const shared_ptr<Address> &address_);
-    const void unregisterClient (shared_ptr<Client> client_);
+    static const shared_ptr<Client> registerClient (const shared_ptr<ClientRepository> cr, const int &id, const string& firstName_, const string& lastName_,
+                                             const int& phone_, const shared_ptr<Address> &address_);
+    static const void unregisterClient (const shared_ptr<ClientRepository> cr, shared_ptr<Client> client_);
 };
 
 

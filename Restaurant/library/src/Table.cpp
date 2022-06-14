@@ -9,7 +9,7 @@
 //Konstruktor
 Table::Table(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_): capacity(capacity_),
 numberOfTable(numberOfTable_), RentObject(basePrice, objectID_){
-    hall == nullptr;
+    hall = nullptr;
 }
 
 
@@ -27,8 +27,6 @@ I = shared_from_this();
 //std::cout << shared_from_this() << endl;
 
 }
-
-//Table::Table(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_): capacity(capacity_), numberOfTable(numberOfTable_), RentObject(basePrice, objectID_){}
 //Destruktor
 Table::~Table(){}
 

@@ -61,9 +61,6 @@ const bool RentObject::isArchive() const {
 }
 
 //Settery
-void RentObject::updatePrice() {
-    throw RentObjectExceptions("UNABLE TO UPDATE PRICE!");
-}
 
 void RentObject::setRented(const bool &arg){
     rented = arg;
