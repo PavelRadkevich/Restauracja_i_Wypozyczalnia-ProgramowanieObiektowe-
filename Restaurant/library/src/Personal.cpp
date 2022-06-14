@@ -9,7 +9,6 @@
 Personal::Personal(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_) :
 Table(basePrice, objectID_, capacity_, numberOfTable_){
     shared_ptr<Table> p = Table::create (basePrice, objectID_, capacity_, numberOfTable_);
-    parent = p;
     I = p;
 }
 
@@ -35,10 +34,5 @@ const string Personal::getObjectInfo() const {
 //Settery
 void Personal::updatePrice() {
     cost = basePrice * hall->getPriceFactor() * capacity;
-}
-
-
-const shared_ptr<const Table> Personal::getParent() const {
-    return parent;
 }
 

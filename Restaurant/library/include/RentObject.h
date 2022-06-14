@@ -32,7 +32,6 @@ public:
     const int &getBasePrice () const;
     const int &getObjectID () const;
     virtual const string getObjectInfo () const;
-    virtual const double getActualPriceForHour () const;
     virtual const shared_ptr<Hall> getTableHallPtr () const;
     virtual shared_ptr<const Table> getTablePtr ();
     virtual const vector<shared_ptr<Table>>* getTablesOfHall () const;
@@ -42,7 +41,7 @@ public:
 
     //Settery
     virtual void updatePrice ();
-    virtual void setRented(const bool &arg);
+    void setRented(const bool &arg);
     virtual void setRentForTables (const bool&);
     void setArchive (const bool& arg);
 };

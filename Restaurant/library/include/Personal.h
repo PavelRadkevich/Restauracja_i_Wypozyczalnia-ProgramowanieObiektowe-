@@ -10,7 +10,6 @@
 
 class Personal : public Table{
 protected:
-    shared_ptr<Table> parent;
 
 public:
     //Konstruktor
@@ -21,7 +20,6 @@ public:
 
     //Gettery
     const string getObjectInfo() const;
-    const shared_ptr<const Table> getParent () const;
 
     //Settery
     void updatePrice ();

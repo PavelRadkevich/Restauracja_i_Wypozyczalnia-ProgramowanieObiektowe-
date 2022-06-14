@@ -24,17 +24,6 @@ const int RentObjectRepository::getRepositorySize() const {
     return vectorRentObject.size();
 }
 
-const vector<shared_ptr<RentObject>> *RentObjectRepository::getAllTableInHall(const shared_ptr<Hall> hall, vector<shared_ptr<RentObject>> *tables) const {
-    for (auto t = vectorRentObject.begin(); t < vectorRentObject.end(); t++){
-        if ((*t)->getTableHallPtr() == hall)
-        {
-            tables->push_back((*t));
-        }
-    }
-
-    return tables;
-}
-
 const vector<shared_ptr<RentObject>> *RentObjectRepository::getAllRentObjects() const{
     return &vectorRentObject;
 }

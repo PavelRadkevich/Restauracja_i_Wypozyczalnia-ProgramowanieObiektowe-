@@ -10,7 +10,6 @@
 class Group : public Table{
 protected:
     double sale;
-    shared_ptr<Table> parent;
 
 public:
     //Konstruktor

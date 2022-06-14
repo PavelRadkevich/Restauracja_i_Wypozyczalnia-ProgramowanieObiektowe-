@@ -60,20 +60,6 @@ const int Table::getTableNumber() const {
 }
 
 //Settery
-void Table::changeHall(HallPtr newHall, shared_ptr<Table> table1) {
-    if (newHall == nullptr)
-        throw RentObjectExceptions ("INVALID HALL IN FUCTION CHANGEHALL!");
-    if (newHall == hall)
-        throw RentObjectExceptions ("THIS HALL IS ALREADY SET!");
-    if (hall != nullptr)
-    hall->removeTable(table1);
-
-    hall = newHall;
-    newHall->addTable(table1);
-
-    table1->updatePrice();
-}
-
 void Table::updatePrice() {
     throw RentObjectExceptions("IMPOSSIBLE UPDATE PRICE!");
 }

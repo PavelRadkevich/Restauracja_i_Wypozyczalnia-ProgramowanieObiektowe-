@@ -8,7 +8,6 @@
 Group::Group(const int &basePrice, const int &objectID_, const int &capacity_,const int &numberOfTable_, const double &sale_) :
 sale(sale_) ,Table(basePrice, objectID_, capacity_, numberOfTable_){
     shared_ptr<Table> p = Table::create (basePrice, objectID_, capacity_, numberOfTable_);
-    parent = p;
     I = p;
 }
 

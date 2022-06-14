@@ -8,6 +8,7 @@
 #include "exceptions/RentObjectExceptions.h"
 #include "RentObject.h"
 #include "managers/RentObjectManager.h"
+#include "exceptions/ManagersExceptions.h"
 
 struct RentObjectFixture {
     int basePrice1 = 10; int basePrice2 = 20; int basePrice3 = 30; int basePrice4 = 30;
@@ -89,8 +90,8 @@ BOOST_FIXTURE_TEST_SUITE(RentObjectTest, RentObjectFixture)
         BOOST_TEST (h2->getHallSize() == 1);
         BOOST_TEST (p->getHallPtr() == h2);
         BOOST_TEST (p->getCost() == basePrice1 * h2->getPriceFactor() * capacity1);
-        BOOST_CHECK_THROW(p->changeHall(nullptr, p), RentObjectExceptions);
-        BOOST_CHECK_THROW(p->changeHall(h2, p), RentObjectExceptions);
+        BOOST_CHECK_THROW(RentObjectManager::changeHall(nullptr, p), ManagersExceptions);
+        BOOST_CHECK_THROW(RentObjectManager::changeHall(h2, p), ManagersExceptions);
 
     }
 

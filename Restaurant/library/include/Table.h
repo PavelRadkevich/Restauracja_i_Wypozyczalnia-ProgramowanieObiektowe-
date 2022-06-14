@@ -37,7 +37,6 @@ public:
     const int getTableNumber () const;
 
     //Settery
-    void changeHall (HallPtr newHall, shared_ptr<Table> table1);
     virtual void updatePrice ();
     void setHall (shared_ptr<Hall> newHall);
 

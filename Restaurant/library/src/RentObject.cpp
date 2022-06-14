@@ -32,10 +32,6 @@ const string RentObject::getObjectInfo() const {
     return "Object ID: " + to_string(objectID) + ". Base price: " + to_string(basePrice);
 }
 
-const double RentObject::getActualPriceForHour() const {
-    return 0;
-}
-
 const shared_ptr<Hall> RentObject::getTableHallPtr() const {
     return nullptr;
 }
