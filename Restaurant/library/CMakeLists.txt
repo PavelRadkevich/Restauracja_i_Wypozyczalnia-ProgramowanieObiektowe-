@@ -58,7 +58,9 @@ include_directories(
 set(SOURCE_TEST_FILES
         test/master.cpp
         test/AddressTest.cpp
-        test/ClientTest.cpp test/RentObjectTest.cpp) # tu w przyszłości będą dodawane pliki źródłowe testów
+        test/ClientTest.cpp
+        test/RentObjectTest.cpp
+        test/RentTest.cpp) # tu w przyszłości będą dodawane pliki źródłowe testów
 
 add_executable (LibraryTest ${SOURCE_TEST_FILES})
 

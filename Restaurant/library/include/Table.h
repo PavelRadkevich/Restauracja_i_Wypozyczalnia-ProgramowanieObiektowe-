@@ -13,7 +13,7 @@ protected:
     int capacity;
     HallPtr hall;
     int numberOfTable;
-    shared_ptr<Table> I;
+    TablePtr I;
 
     void init();
 
@@ -38,7 +38,7 @@ public:
 
     //Settery
     virtual void updatePrice ();
-    void setHall (shared_ptr<Hall> newHall);
+        void setHall (HallPtr newHall);
 
 };
 

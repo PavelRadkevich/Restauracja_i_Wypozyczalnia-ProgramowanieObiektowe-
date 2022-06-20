@@ -9,6 +9,7 @@
 #include "RentObject.h"
 #include "managers/RentObjectManager.h"
 #include "exceptions/ManagersExceptions.h"
+#include "repositories/RentObjectRepository.h"
 
 struct RentObjectFixture {
     int basePrice1 = 10; int basePrice2 = 20; int basePrice3 = 30; int basePrice4 = 30;
@@ -18,8 +19,11 @@ struct RentObjectFixture {
     double sale = 0.2;
     double priceFactor1 = 0.5; double priceFactor2 = 0.4;
     const std::string name1 = "Kaczka"; const std::string name2 = "Uroda";
+    shared_ptr<RentObjectRepository> ror = make_shared<RentObjectRepository>();
+    shared_ptr<RentObjectManager> rom = make_shared<RentObjectManager>(ror);
 
-    RentObjectFixture() {};
+    RentObjectFixture() {
+    };
 
     ~RentObjectFixture() {};
 };
@@ -63,8 +67,8 @@ BOOST_FIXTURE_TEST_SUITE(RentObjectTest, RentObjectFixture)
         shared_ptr<Personal> p = make_shared<Personal>(basePrice1, objectID1, capacity1, numberOfTable1);
         shared_ptr<Group> g = make_shared<Group>(basePrice2, objectID2, capacity2, numberOfTable2, sale);
         shared_ptr<Hall> h = make_shared<Hall>(basePrice3, objectID3, priceFactor1, name1);
-        RentObjectManager::changeHall(h, p);
-        RentObjectManager::changeHall(h, g);
+        rom->changeHall(h, p);
+        rom->changeHall(h, g);
         BOOST_TEST (2 == h->getHallSize());
         BOOST_TEST (p->getCost() == basePrice1 * h->getPriceFactor() * capacity1);
         BOOST_TEST (g->getCost() == basePrice2 * h->getPriceFactor() * capacity2 * sale);
@@ -82,16 +86,16 @@ BOOST_FIXTURE_TEST_SUITE(RentObjectTest, RentObjectFixture)
         shared_ptr<Group> g = make_shared<Group>(basePrice2, objectID2, capacity2, numberOfTable2, sale);
         shared_ptr<Hall> h1 = make_shared<Hall>(basePrice3, objectID3, priceFactor1, name1);
         shared_ptr<Hall> h2 = make_shared<Hall>(basePrice4, objectID4, priceFactor2, name2);
-        RentObjectManager::changeHall(h1, p);
-        RentObjectManager::changeHall(h1, g);
+        rom->changeHall(h1, p);
+        rom->changeHall(h1, g);
         BOOST_TEST (p->getHallPtr() == h1);
-        RentObjectManager::changeHall(h2, p);
+        rom->changeHall(h2, p);
         BOOST_TEST (h1->getHallSize() == 1);
         BOOST_TEST (h2->getHallSize() == 1);
         BOOST_TEST (p->getHallPtr() == h2);
         BOOST_TEST (p->getCost() == basePrice1 * h2->getPriceFactor() * capacity1);
-        BOOST_CHECK_THROW(RentObjectManager::changeHall(nullptr, p), ManagersExceptions);
-        BOOST_CHECK_THROW(RentObjectManager::changeHall(h2, p), ManagersExceptions);
+        BOOST_CHECK_THROW(rom->changeHall(nullptr, p), ManagersExceptions);
+        BOOST_CHECK_THROW(rom->changeHall(h2, p), ManagersExceptions);
 
     }
 

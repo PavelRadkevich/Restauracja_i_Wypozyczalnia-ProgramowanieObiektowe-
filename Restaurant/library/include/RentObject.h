@@ -8,6 +8,7 @@
 #include <string>
 #include <memory>
 #include <vector>
+#include "typedefs.h"
 
 using namespace std;
 class Hall;
@@ -17,7 +18,7 @@ class RentObject{
 protected:
     int basePrice;
     int objectID;
-    shared_ptr<Table> table;
+    TablePtr table;
     double cost;
     bool rented;
     bool archive;

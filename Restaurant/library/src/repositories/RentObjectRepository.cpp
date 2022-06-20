@@ -3,6 +3,7 @@
 //
 
 #include "repositories/RentObjectRepository.h"
+#include "RentObject.h"
 
 //Konstruktor
 RentObjectRepository::RentObjectRepository() {}

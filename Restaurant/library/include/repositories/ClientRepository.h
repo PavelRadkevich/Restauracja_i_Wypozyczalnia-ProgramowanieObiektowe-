@@ -5,17 +5,16 @@
 #ifndef RESTAURANT_CLIENTREPOSITORY_H
 #define RESTAURANT_CLIENTREPOSITORY_H
 
-//#include "Client.h"
 #include <vector>
 #include <memory>
 #include <string>
+#include "typedefs.h"
 
 using namespace std;
-class Client;
 class ClientRepository {
 
 private:
-    vector<shared_ptr<Client>> vectorClient;
+    vector<ClientPtr> vectorClient;
 
 public:
     //Konstruktor
@@ -25,13 +24,13 @@ public:
     ~ClientRepository();
 
     //Gettery
-    const shared_ptr<Client> getClientByID (const int id) const;
+    const ClientPtr getClientByID (const int id) const;
     const int getRepositorySize () const;
-    const vector<shared_ptr<Client>>* getAllClients () const;
+    const vector<ClientPtr>* getAllClients () const;
 
     //Settery
-    void addClient (const shared_ptr<Client>);
-    void removeClient (const shared_ptr<Client>);
+    void addClient (const ClientPtr);
+    void removeClient (const ClientPtr);
 };
 
 

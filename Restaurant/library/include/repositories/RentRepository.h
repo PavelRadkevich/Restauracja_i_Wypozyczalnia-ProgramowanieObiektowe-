@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <memory>
+#include "typedefs.h"
 using namespace std;
 
 
@@ -15,8 +16,8 @@ class Client;
 class RentObject;
 class RentRepository {
 private:
-    vector<shared_ptr<Rent>> vectorCurrentRents;
-    vector<shared_ptr<Rent>> vectorArchiveRents;
+    vector<RentPtr> vectorCurrentRents;
+    vector<RentPtr> vectorArchiveRents;
 
 public:
     //Konstruktor
@@ -26,17 +27,17 @@ public:
     ~RentRepository();
 
     //Gettery
-    const shared_ptr<Rent> getRent (const int &ID) const;
-    const vector<shared_ptr<Rent>> *getClientRents (const shared_ptr<Client> client_) const;
+    const RentPtr getRent (const int &ID) const;
+    const vector<RentPtr> *getClientRents (const ClientPtr client_) const;
     const int getRepositorySize ()const;
-    const vector<shared_ptr<Rent>> *getAllActualRents () const;
-    const vector<shared_ptr<Rent>> *getAllArchiveRents () const;
-    const shared_ptr<Rent> getRentObjectRent(const shared_ptr<RentObject> rentObject_) const;
+    const vector<RentPtr> *getAllActualRents () const;
+    const vector<RentPtr> *getAllArchiveRents () const;
+    const RentPtr getRentObjectRent(const RentObjectPtr rentObject_) const;
 
     //Settery
-    void addCurrentRent (const shared_ptr<Rent>);
-    void archiveRent (const shared_ptr<Rent>);
-    void removeRent (const shared_ptr<Rent>);
+    void addCurrentRent (const RentPtr);
+    void archiveRent (const RentPtr);
+    void removeRent (const RentPtr);
 
 };
 

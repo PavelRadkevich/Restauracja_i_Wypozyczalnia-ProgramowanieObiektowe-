@@ -4,17 +4,18 @@
 
 #include "Client.h"
 #include "exceptions/ClientExceptions.h"
+#include "Address.h"
 
 //Konstruktor
-Client::Client(const int &id, const string& firstName_, const string &lastName_, const int &phone_, const shared_ptr<Address>& address_):
+Client::Client(const int &id, const string& firstName_, const string &lastName_, const int &phone_, const AddressPtr & address_):
 id(id), firstName(firstName_), lastName(lastName_),phone(phone_), address(address_) {
     if (id < 1) throw ClientExceptions("INVALID ID");
     if (firstName.empty()) throw ClientExceptions("INVALID FIRST NAME");
     if (lastName.empty()) throw ClientExceptions("INVALID LAST NAME");
-    if (phone < 1) throw ClientExceptions ("INVALID PHONE");
-    if (address->getAddressInfo().empty() or address == nullptr) throw ClientExceptions ("INVALID ADDRESS!");
+    if (phone < 1) throw ClientExceptions("INVALID PHONE");
+    if (address_->getAddressInfo().empty() or address == nullptr) throw ClientExceptions ("INVALID ADDRESS!");
     archive = false;
-}
+    }
 
 //Destruktor
 Client::~Client() {}

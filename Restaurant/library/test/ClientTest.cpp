@@ -4,12 +4,14 @@
 
 #include "boost/test/unit_test.hpp"
 #include "Client.h"
+#include "Address.h"
+#include "typedefs.h"
 struct ClientFixture {
     int id = 1;
     string FirstName = "Jon";
     string LastName = "Arbuckle";
     int phone = 5312890;
-    shared_ptr<Address> address;
+    AddressPtr address;
     bool archive;
 
     ClientFixture() {

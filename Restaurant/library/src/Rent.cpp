@@ -29,6 +29,10 @@ id(id_), client(client_), beginTime(beginTime_), endTime(endTime_), rentObject(r
     if (isHallRent){
         rentObject->setRentForTables(true);
     }
+    else{
+        if(rentObject->getTableHallPtr()== nullptr)
+            throw RentExceptions ("TABLE DON'T HAVE A HALL!");
+    }
 }
 
 //Destruktor

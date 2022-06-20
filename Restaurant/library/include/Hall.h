@@ -7,12 +7,13 @@
 
 #include "RentObject.h"
 #include <vector>
+#include "typedefs.h"
 
 class Hall : public RentObject{
 protected:
     string name;
     double priceFactor;
-    vector<shared_ptr<Table>> tables;
+    vector<TablePtr> tables;
 
 public:
     //Konstruktor
@@ -25,13 +26,13 @@ public:
     const double  getPriceFactor () const;
     const string getName () const;
     const string getObjectInfo () const;
-    const vector<shared_ptr<Table>> *getTablesOfHall () const;
+    const vector<TablePtr> *getTablesOfHall () const;
     const string getIDOfTablesOfHall () const;
     const int getHallSize ()const;
 
     //Settery
-    void addTable (const shared_ptr<Table>&);
-    void removeTable(shared_ptr<Table>);
+    void addTable (const TablePtr &);
+    void removeTable(TablePtr);
     void setRentForTables (const bool&) override;
     void updatePrice ();
 

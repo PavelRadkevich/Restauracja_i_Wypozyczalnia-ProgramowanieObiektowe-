@@ -4,6 +4,7 @@
 
 #include "Group.h"
 #include "exceptions/RentObjectExceptions.h"
+#include "Hall.h"
 //Konstruktor
 Group::Group(const int &basePrice, const int &objectID_, const int &capacity_,const int &numberOfTable_, const double &sale_) :
 sale(sale_) ,Table(basePrice, objectID_, capacity_, numberOfTable_){

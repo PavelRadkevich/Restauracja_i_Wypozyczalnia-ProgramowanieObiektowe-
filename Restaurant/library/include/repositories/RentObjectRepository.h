@@ -7,11 +7,11 @@
 
 #include "vector"
 #include "typedefs.h"
-#include "RentObject.h"
+
 
 class RentObjectRepository {
 private:
-    std::vector<shared_ptr<RentObject>> vectorRentObject;
+    std::vector<RentObjectPtr> vectorRentObject;
 
 public:
     //Konstruktor
@@ -21,13 +21,13 @@ public:
     ~RentObjectRepository();
 
     //Gettery
-    const shared_ptr<RentObject> getRentObject (const int ID) const;
+    const RentObjectPtr getRentObject (const int ID) const;
     const int getRepositorySize ()const;
-    const vector<shared_ptr<RentObject>> *getAllRentObjects () const;
+    const vector<RentObjectPtr> *getAllRentObjects () const;
 
     //Settery
-    void addRentObject (const shared_ptr<RentObject>);
-    void removeRentObject (const shared_ptr<RentObject>);
+    void addRentObject (const RentObjectPtr);
+    void removeRentObject (const RentObjectPtr);
 };
 
 

@@ -7,24 +7,25 @@
 
 #include "typedefs.h"
 
+
 class StorageContainer {
 private:
-    ClientRepository *clientRepository;
-    RentObjectRepository *rentObjectRepository;
-    RentRepository *rentRepository;
+    ClientRepositoryPtr clientRepository;
+    RentObjectRepositoryPtr rentObjectRepository;
+    RentRepositoryPtr rentRepository;
 
 public:
     //Konstruktor
-    StorageContainer(ClientRepository *cr, RentObjectRepository *ror,
-                     RentRepository *rr);
+    StorageContainer(ClientRepositoryPtr cr, RentObjectRepositoryPtr ror,
+                     RentRepositoryPtr rr);
 
     //Destruktor
     ~StorageContainer();
 
     //Gettery
-    const ClientRepository* getClientRepositry () const;
-    const RentObjectRepository* getRentObjectRepository () const;
-    const RentRepository* getRentRepository () const;
+    const ClientRepositoryPtr getClientRepositry () const;
+    const RentObjectRepositoryPtr getRentObjectRepository () const;
+    const RentRepositoryPtr getRentRepository () const;
 };
 
 

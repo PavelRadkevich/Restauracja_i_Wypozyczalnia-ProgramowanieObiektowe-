@@ -3,10 +3,13 @@
 //
 
 #include "repositories/StorageContainer.h"
+#include "repositories/ClientRepository.h"
+#include "repositories/RentRepository.h"
+#include "repositories/RentObjectRepository.h"
 
 //Konstruktor
-StorageContainer::StorageContainer(ClientRepository *cr,
-RentObjectRepository *ror, RentRepository *rr) :clientRepository(cr),
+StorageContainer::StorageContainer(ClientRepositoryPtr cr,
+RentObjectRepositoryPtr ror, RentRepositoryPtr rr) :clientRepository(cr),
 rentObjectRepository(ror), rentRepository(rr){
 
 }
@@ -16,14 +19,14 @@ StorageContainer::~StorageContainer() {}
 
 
 //Gettery
-const ClientRepository* StorageContainer::getClientRepositry() const {
+const ClientRepositoryPtr StorageContainer::getClientRepositry() const {
     return clientRepository;
 }
 
-const RentObjectRepository* StorageContainer::getRentObjectRepository() const {
+const RentObjectRepositoryPtr StorageContainer::getRentObjectRepository() const {
     return rentObjectRepository;
 }
 
-const RentRepository* StorageContainer::getRentRepository() const {
+const RentRepositoryPtr StorageContainer::getRentRepository() const {
     return rentRepository;
 }

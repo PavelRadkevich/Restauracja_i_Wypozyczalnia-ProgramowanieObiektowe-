@@ -21,25 +21,24 @@ private:
 
 public:
     //Konstruktor
-
+    RentObjectManager(const shared_ptr<RentObjectRepository> rep);
     //Destruktor
+    ~RentObjectManager();
 
     //Gettery
-    static const shared_ptr<RentObject> getRentObject (const shared_ptr<RentObjectRepository> ror, const int &id);
-    static const vector<shared_ptr<RentObject>> *getAllRentObjects (const shared_ptr<RentObjectRepository> ror);
+    const shared_ptr<RentObject> getRentObject (const int &id);
+    const vector<shared_ptr<RentObject>> *getAllRentObjects ();
 
     //Settery
-    static const shared_ptr<Personal> registerPersonalTable (const shared_ptr<RentObjectRepository> ror,
-                                                               const int& basePrice, const int& objectID_,
+    const shared_ptr<Personal> registerPersonalTable (const int& basePrice, const int& objectID_,
                                                                const int& capacity_, const int& numberOfTable_);
-    static const shared_ptr<Group> registerGroupTable (const shared_ptr<RentObjectRepository> ror,
-                                                            const int& basePrice, const int& objectID_,
+    const shared_ptr<Group> registerGroupTable (const int& basePrice, const int& objectID_,
                                                             const int& capacity_, const int& numberOfTable,
                                                             const double& sale_);
-    static const shared_ptr<Hall> registerHall (const shared_ptr<RentObjectRepository> ror, const int &basePrice_,
+    const shared_ptr<Hall> registerHall (const int &basePrice_,
                                                       const int &objectID, const double& priceFactor_, const string& name_);
-    static const void unregisterRentObject (const shared_ptr<RentObjectRepository> ror, shared_ptr<RentObject> rentObject_);
-    static const void changeHall (const shared_ptr<RentObjectRepository> ror, shared_ptr<Hall> newHall_, shared_ptr<Table>);
+    const void unregisterRentObject (shared_ptr<RentObject> rentObject_);
+    const void changeHall (shared_ptr<Hall> newHall_, shared_ptr<Table>);
 };
 
 

@@ -9,19 +9,19 @@
 #include "typedefs.h"
 
 using namespace std;
-
+class Address;
 class Client : enable_shared_from_this<Client> {
 private:
     int id;
     string firstName;
     string lastName;
     int phone;
-    shared_ptr<Address> address;
+    AddressPtr address;
     bool archive;
 
 public:
     //Konstruktor
-    Client(const int &id, const string& firstName_, const string& lastName_, const int& phone_, const shared_ptr<Address> &address_);
+    Client(const int &id, const string& firstName_, const string& lastName_, const int& phone_, const AddressPtr &address_);
 
     //Destruktor
     ~Client();

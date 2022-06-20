@@ -5,6 +5,7 @@
 #include "Personal.h"
 #include "exceptions/RentObjectExceptions.h"
 #include <iostream>
+#include "Hall.h"
 //Konstruktor
 Personal::Personal(const int &basePrice, const int &objectID_, const int &capacity_, const int &numberOfTable_) :
 Table(basePrice, objectID_, capacity_, numberOfTable_){
