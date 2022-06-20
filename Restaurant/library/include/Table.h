@@ -38,7 +38,7 @@ public:
 
     //Settery
     virtual void updatePrice ();
-        void setHall (HallPtr newHall);
+    void setHall (HallPtr newHall);
 
 };
 

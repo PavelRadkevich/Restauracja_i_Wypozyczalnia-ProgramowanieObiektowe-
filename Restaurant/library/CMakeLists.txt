@@ -79,5 +79,4 @@ add_test(LibraryTest1 LibraryTest
         )
 
 add_custom_target(check ${CMAKE_COMMAND} -E env CTEST_OUTPUT_ON_FAILURE=1 BOOST_TEST_LOG_LEVEL=all
-        ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION> --verbose
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+        ${CMAKE_CTEST_COMMAND} -C $<CONFIGURATION> --verbose)

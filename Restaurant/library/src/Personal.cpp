@@ -1,3 +1,4 @@
+
 //
 // Created by student on 03.06.2022.
 //
@@ -36,4 +37,3 @@ const string Personal::getObjectInfo() const {
 void Personal::updatePrice() {
     cost = basePrice * hall->getPriceFactor() * capacity;
 }
-

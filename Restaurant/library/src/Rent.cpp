@@ -109,4 +109,3 @@ void Rent::setRent(const bool& arg) {
 void Rent::setArchive(const bool &arg) {
     archive = arg;
 }
-

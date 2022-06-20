@@ -5,13 +5,6 @@
 #ifndef RESTAURANT_TYPEDEFS_H
 #define RESTAURANT_TYPEDEFS_H
 
-
-//#include "Address.h"
-//#include "Hall.h"
-
-//#include "repositories/ClientRepository.h"
-//#include "repositories/RentObjectRepository.h"
-//#include "repositories/RentRepository.h"
 #include "memory"
 using namespace std;
 class Address;
@@ -40,7 +33,6 @@ typedef shared_ptr<Client> ClientPtr;
 typedef shared_ptr<Rent> RentPtr;
 typedef shared_ptr<Personal> PersonalPtr;
 typedef shared_ptr<RentObjectManager> RentObjectManagerPtr;
-
 
 
 #endif //RESTAURANT_TYPEDEFS_H

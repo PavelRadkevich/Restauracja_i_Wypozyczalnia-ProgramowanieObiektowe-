@@ -57,6 +57,5 @@ int main()
     cout << "KONCZYMY WYNAJEM Z INNYM CZASEM" << endl;
     cout << "KONCOWA CENA: " << r->getEndCost() << endl;
     cout << "INFO O WYNAJMU: " << endl <<  r->getRentInfo() << endl;
-
 }
 
